@@ -17,7 +17,7 @@ OS:Windows 10 Pro 64bit(1803)
 ライブラリ:tweepy3.7.0
 標準ライブラリ:yaml, datetime, random, time
 
-※必須ファイル
+※必須ファイル：
 このプログラムを動かすにはTwitterAPIの認証キーを記述した"api_key.yml"が必要です。
 
 ## 4. Twitter APIとリプライ取得
