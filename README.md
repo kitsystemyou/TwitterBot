@@ -27,6 +27,9 @@ OS:Windows 10 Pro 64bit(1803)
 
 ## 5. 参考
 
+tweepyの扱い
+https://github.com/Marsan-Ma/twitter_scraper
+
 mentions_timeline
 https://sites.google.com/site/cloverplusrose/twitter-mentionwo-dumeruyouninarumade
 
