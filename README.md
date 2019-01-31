@@ -1,5 +1,5 @@
 # カモメbot
-カモメbot (旧、新)
+カモメbot (旧:tbot.py 新:seagull.py)
 
 ## 1. 概要
 リプライを送るとカモメのような鳴き声が返ってくるtwitterbotです。毎回多様な返事をしますが会話能力はありません。
@@ -26,11 +26,15 @@ OS:Windows 10 Pro 64bit(1803)
 (Account Activity APIとWebhookを使うともっとスマートにできると思います。）
 
 ## 5. 参考
+
 mentions_timeline
 https://sites.google.com/site/cloverplusrose/twitter-mentionwo-dumeruyouninarumade
+
 Cursol(tweepy)
 https://tweepy.readthedocs.io/en/3.7.0/cursor_tutorial.html
+
 リプライ送信時の注意(in_reply_to_status_idはデフォルトだと自分以外無視される)
 https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/post-statuses-update
+
 API制限について
 https://developer.twitter.com/en/docs/basics/rate-limits.html
