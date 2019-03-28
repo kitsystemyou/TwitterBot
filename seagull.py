@@ -10,15 +10,15 @@ import time
 cfg = yaml.load(open('api_key.yml', 'rt'))['twitter']
 auth = OAuthHandler(cfg['consumer_key'], cfg['consumer_secret'])
 auth.set_access_token(cfg['access_token'], cfg['access_token_secret'])
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 print("start")
 
-#set now time
-t = datetime.now()
-nowtime = str(t.hour)+"時"+str(t.minute)+"分"+str(t.second)+"秒"
 
 def make_tweet(text):
     list = ["ふぁー","ふぁ","ふぁっ","ふぁーふぁ","ふぁぁ"]
+
+    t = datetime.now()
+    nowtime = str(t.hour)+"時"+str(t.minute)+"分"+str(t.second)+"秒"
 
     if "時間" in text or "タイム" in text or "time" in text:       #reply time
         tweet = random.choice(list)
@@ -30,10 +30,10 @@ def make_tweet(text):
         length = random.randint(1,8)
         tweet =""
         for i in range(length):
+            tweet += random.choice(list)
+        if "群れ" in text:                  #double
+            for i in range(length):
                 tweet += random.choice(list)
-                if "群れ" in text:
-                    for i in range(length):
-                            tweet += random.choice(list)
         return tweet+"!"
         # return "Thank you for your replying me!@"+str(nowtime)
 
@@ -54,14 +54,16 @@ while True:
         print(replies.text, replies.entities["user_mentions"],replies.id)
         print()
         if "カモメbot" in replies.text:        #reply include the word or not
-            tweet_all = make_tweet(replies.text)
-            print(tweet_all)
-            api.update_status(status=tweet_all, in_reply_to_status_id=replies.id, auto_populate_reply_metadata="True")
-
+            # tweet_all = make_tweet(replies.text)
+            # print(tweet_all)
+            # api.update_status(status=tweet_all, in_reply_to_status_id=replies.id, auto_populate_reply_metadata="True")
+            print("seek")
         print(most_latest_ID, replies.id)    # checking most_latest_ID whether updating or not
     print("complete checking replies")
 
     with open(id_text_path, mode="w") as f:  # write most_latest_ID
         f.write(str(most_latest_ID))
-
+    ct = datetime.now()
+    continue_time = str(ct.hour)+"時"+str(ct.minute)+"分"+str(ct.second)+"秒"
+    print(continue_time)
     time.sleep(interval)
